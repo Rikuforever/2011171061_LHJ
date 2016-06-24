@@ -15,6 +15,7 @@ class Hash:
             print("Error : Already Existing Key")
             return None
         self.hTable[n].add(key, v)
+        return 1
 
     def delete(self, key):
         n = key % self.size

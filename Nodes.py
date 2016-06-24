@@ -14,7 +14,28 @@ class Tweet:
     def __init__(self):
         self.word = None
         self.userList = LinkedList()
-        self.userCount = 0
+        self.tweetCount = 0
+
+    def getUserList(self):
+        out = []
+        user = []
+        count = []
+        n = self.userList.start
+        while n:
+            try:
+                x = user.index(n.v)
+            except ValueError:
+                x = None
+            if not x:
+                user.append(n.v)
+                count.append(1)
+            else:
+                count[x] += 1
+            n = n.next
+        out.append(user)
+        out.append(count)
+        return out
+
 
 
 class Edge:                     # From A to B

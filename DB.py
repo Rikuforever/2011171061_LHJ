@@ -28,12 +28,12 @@ class MasterDB:
             t = self.TweetDB.searchTweet(word)
             if t:                           # If already existing Tweet, add User
                 t.userList.add(id, u)
-                t.userCount += 1
+                t.tweetCount += 1
             else:                           # If no matching Tweet, make new Tweet
                 new = Tweet()
                 new.word = word
                 new.userList.add(id, u)
-                new.userCount += 1
+                new.tweetCount += 1
                 self.TweetDB.addTweet(word, new)
             self.UserDB.plusTweet(id)              # Update Statistics
             return 1
@@ -143,6 +143,7 @@ class UserDB:
     def addUser(self, id, n):
         if self.list.add(id, n):   # If successfully added
             self.totalUser += 1
+            return 1
         else:
             return None
 
@@ -211,6 +212,7 @@ class TweetDB:
             return None
         else:
             self.list.hTable[n].add(word, v)
+            self.totalTweet += 1
             return 1
 
     def deleteTweet(self, key):
@@ -222,9 +224,9 @@ class TweetDB:
     def searchTweet(self, word):
         h = self.getHash(word)
         n = h % self.list.size
-        u = self.list.hTable[n].search(word)
-        if u:
-            return u
+        t = self.list.hTable[n].search(word)
+        if t:
+            return t
         else:
             return None
 
@@ -236,18 +238,20 @@ class TweetDB:
                 if n.v:
                     self.wordRank.append(n.v)
                 n = n.next
-        self.tweetRank = sorted(self.wordRank, key=self.getWord, reverse=True)  # Sort by TweetCount
+        self.wordRank = sorted(self.wordRank, key=self.getWord, reverse=True)  # Sort by TweetCount
 
     def getWord(self, t):
-        return t.userCount
+        return t.tweetCount
 
 
 class EdgeDB:
     def __init__(self):
         self.list = LinkedList()
+        self.totalEdge = 0
 
     def addEdge(self, n):
         self.list.add(None, n)
+        self.totalEdge += 1
 
     def deleteUser(self, id):
         pre = None
