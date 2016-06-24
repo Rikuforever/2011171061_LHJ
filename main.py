@@ -80,16 +80,35 @@ while status != 99:
         print()
         print("Input one word: ", end="")
         w = input()
-        t = db.TweetDB.searchTweet(w)
+        l = db.searchUserByWord()
         print()
         print("=====")
-        if t:   # Valid word
-            l = t.getUserList()
+        if l:   # Valid word
             user = l[0]
             count = l[1]
             for x in range(len(user)):
                 print(user[x].userName+" ( "+str(count[x])+" times )")
         else:   # Valid word
+            print("Invalid word, please try again")
+        print("=====")
+        print()
+        status = -1
+    elif status == 5:
+        print()
+        print("Input one word: ", end="")
+        w = input()
+        l = db.searchUserByWord(w)
+        print()
+        print("=====")
+        if l:
+            user = l[0]
+            for x in range(len(user)):  # For each found user
+                print(user[x].userName+"'s Friends: ")
+                u = db.getFollowUser(user[x].id)
+                for y in range(len(u)):
+                    print("   "+u[y].userName)  # Print follow UserNames
+                print()
+        else:
             print("Invalid word, please try again")
         print("=====")
         print()

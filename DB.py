@@ -127,8 +127,19 @@ class MasterDB:
         return self.UserDB.updateTweetRank()
 
     def searchUserByWord(self, word):
-        user = []
-        self.TweetDB.list.search
+        t = self.TweetDB.searchTweet(word)
+        if t:
+            return t.getUserList()
+        else:
+            return None
+
+    def getFollowUser(self, id):
+        l = self.EdgeDB.getFollowID(id)
+        for x in range(len(l)):
+            u = self.UserDB.getUser(l[x])
+            if u:
+                l[x] = u
+        return l
 
 class UserDB:
     def __init__(self):
@@ -147,6 +158,13 @@ class UserDB:
     def deleteUser(self, id):
         if self.list.delete(id):   # If successfully deleted
             self.totalUser -= 1
+        else:
+            return None
+
+    def getUser(self, id):
+        u = self.list.search(id)
+        if u:
+            return u
         else:
             return None
 
@@ -250,7 +268,7 @@ class EdgeDB:
         self.totalEdge = 0
 
     def addEdge(self, n):
-        self.list.add(None, n)
+        self.list.add(None, n)                  # Need to check for duplicates
         self.totalEdge += 1
 
     def deleteUser(self, id):
@@ -267,3 +285,12 @@ class EdgeDB:
             else:
                 pre = n
                 n = n.next
+
+    def getFollowID(self, id):
+        l = []
+        n = self.list.start
+        while n:
+            if n.v.A == id:
+                l.append(n.v.B)
+            n = n.next
+        return l
