@@ -1,5 +1,12 @@
-from Hash import Hash
+from DB import MasterDB
 
-h = Hash(3)
-h.add(5,1)
-h.add(8,7)
+db = MasterDB()
+db.readFile()
+h = db.TweetDB.getHash("내가")
+d = db.TweetDB.list.search(h)
+print(d.userList.start.v.userName)
+db.UserDB.updateFollowRank()
+db.UserDB.updateTweetRank()
+for x in range(300):
+    print(db.UserDB.tweetRank[x].userName)
+    print(db.UserDB.tweetRank[x].tweetCount)

@@ -16,11 +16,17 @@ class Hash:
             return None
         self.hTable[n].add(key, v)
 
+    def delete(self, key):
+        n = key % self.size
+        if self.hTable[n].delete(key):
+            return 1
+        else:
+            return None
+
     def search(self, key):
         n = key % self.size
         v = self.hTable[n].search(key)
         if v:
             return v
         else:
-            print("No Matching Key")
             return None
