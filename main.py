@@ -2,8 +2,7 @@ from DB import MasterDB
 
 db = MasterDB()
 db.readFile()
-h = db.TweetDB.getHash("내가")
-d = db.TweetDB.list.search(h)
+d = db.TweetDB.searchTweet("내가")
 print(d.userList.start.v.userName)
 db.UserDB.updateFollowRank()
 db.UserDB.updateTweetRank()

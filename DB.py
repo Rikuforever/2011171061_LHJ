@@ -25,8 +25,7 @@ class MasterDB:
     def addTweet(self, id, word):
         u = self.UserDB.list.search(id)
         if u:                               # If Valid UserID
-            hData = self.TweetDB.getHash(word)
-            t = self.TweetDB.list.search(hData)
+            t = self.TweetDB.searchTweet(word)
             if t:                           # If already existing Tweet, add User
                 t.userList.add(id, u)
                 t.userCount += 1
@@ -35,7 +34,7 @@ class MasterDB:
                 new.word = word
                 new.userList.add(id, u)
                 new.userCount += 1
-                self.TweetDB.addTweet(hData, new)
+                self.TweetDB.addTweet(word, new)
             self.UserDB.plusTweet(id)              # Update Statistics
             return 1
         else:                               # If Invalid UserID
@@ -203,15 +202,29 @@ class TweetDB:
             hData += ord(word[x])  # Convert Char to Int / Hash Info
         return hData
 
-    def addTweet(self, key, n):
-        if self.list.add(key, n):   # If successfully added
-            self.totalTweet += 1
-        else:
+    def addTweet(self, word, v):
+        h = self.getHash(word)
+        n = h % self.list.size
+        t = self.list.hTable[n].search(word)
+        if t:                                   # If same word already exist
+            print("Error : addTweet() doesn't allow duplicate word")
             return None
+        else:
+            self.list.hTable[n].add(word, v)
+            return 1
 
     def deleteTweet(self, key):
         if self.list.delete(key):
             self.totalTweet -= 1
+        else:
+            return None
+
+    def searchTweet(self, word):
+        h = self.getHash(word)
+        n = h % self.list.size
+        u = self.list.hTable[n].search(word)
+        if u:
+            return u
         else:
             return None
 
