@@ -118,16 +118,13 @@ class MasterDB:
         data.clear()
 
     def getWordRank(self):
-        self.TweetDB.updateWordRank()
-        return self.TweetDB.wordRank
+        return self.TweetDB.updateWordRank()
 
     def getFollowRank(self):
-        self.UserDB.updateFollowRank()
-        return self.UserDB.followRank
+        return self.UserDB.updateFollowRank()
 
     def getTweetRank(self):
-        self.UserDB.updateTweetRank()
-        return self.UserDB.tweetRank
+        return self.UserDB.updateTweetRank()
 
     def searchUserByWord(self, word):
         user = []
@@ -173,6 +170,7 @@ class UserDB:
                     self.followRank.append(n.v)
                 n = n.next
         self.followRank = sorted(self.followRank, key=self.getFollow, reverse=True) # Sort by FollowCount
+        return self.followRank
 
     def updateTweetRank(self):
         self.tweetRank.clear()
@@ -183,6 +181,7 @@ class UserDB:
                     self.tweetRank.append(n.v)
                 n = n.next
         self.tweetRank = sorted(self.tweetRank, key=self.getTweet, reverse=True)   # Sort by TweetCount
+        return self.tweetRank
 
     def getFollow(self, user):
         return user.followCount
@@ -239,6 +238,7 @@ class TweetDB:
                     self.wordRank.append(n.v)
                 n = n.next
         self.wordRank = sorted(self.wordRank, key=self.getWord, reverse=True)  # Sort by TweetCount
+        return self.wordRank
 
     def getWord(self, t):
         return t.tweetCount

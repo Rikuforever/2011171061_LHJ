@@ -21,14 +21,8 @@ while status != 99:
     elif status == 0:
         print()
         print("Loading")
+        print("Finished Loading")
         db.readFile()
-        print()
-        print("=====")
-        print("Finished reading.")
-        print("=====")
-        print()
-        status = -1
-    elif status == 1:
         cUser = db.UserDB.totalUser
         cEdge = db.EdgeDB.totalEdge
         cTweet = db.TweetDB.totalTweet
@@ -40,9 +34,30 @@ while status != 99:
         print("=====")
         print()
         status = -1
+    elif status == 1:
+        f = db.getFollowRank()
+        t = db.getTweetRank()
+        lenFollow = len(f)
+        maxFollow = f[0]
+        minFollow = f[lenFollow - 1]
+        lenTweet = len(t)
+        maxTweet = t[0]
+        minTweet = t[lenTweet - 1]
+
+        print()
+        print("=====")
+        print("Average number of friends: "+str(db.EdgeDB.totalEdge%lenFollow))
+        print("Minimum friends: "+str(minFollow.followCount))
+        print("Maximum number of friends: "+str(maxFollow.followCount))
+        print()
+        print("Average tweets per user: "+str(db.TweetDB.totalTweet%lenTweet))
+        print("Minimum tweets per user: "+str(minTweet.tweetCount))
+        print("Maximum tweets per user: "+str(maxTweet.tweetCount))
+        print("=====")
+        print()
+        status = -1
     elif status == 2:
-        db.TweetDB.updateWordRank()
-        l = db.TweetDB.wordRank
+        l = db.getWordRank()
         print()
         print("=====")
         print("Most Tweeted Words")
@@ -52,8 +67,7 @@ while status != 99:
         print()
         status = -1
     elif status == 3:
-        db.UserDB.updateTweetRank()
-        l = db.UserDB.tweetRank
+        l = db.getTweetRank()
         print()
         print("=====")
         print("Most Tweeted Users")
