@@ -2,7 +2,7 @@ from DB import MasterDB
 
 def getInputInt():
     n = None
-    while not n:
+    while n is None:
         try:
             n = int(input())
         except ValueError:
@@ -24,13 +24,15 @@ while status != 99:
         print("5. Find all people who are friends of the above users")
         print("6. Delete all mentions of a word")
         print("7. Delete all users who mentioned a word")
-        print("8. Find strongly connected components")
-        print("9. Find shortest path from a given user")
+        # print("8. Find strongly connected components")
+        # print("9. Find shortest path from a given user")
         print("99. Quit")
         print("Select Menu:  ", end="")
         status = getInputInt()
     elif status == 0:
+        db = MasterDB()
         print()
+        print("0. Read data files (Reset DB)")
         print("Loading")
         print("Finished Loading")
         db.readFile()
@@ -59,6 +61,7 @@ while status != 99:
         minTweet = t[lenTweet - 1]
 
         print()
+        print("1. Display statistics")
         print("=====")
         print("Total users: " + str(cUser))
         print("Total friendship records: " + str(cEdge))
@@ -77,6 +80,7 @@ while status != 99:
     elif status == 2:
         l = db.getWordRank()
         print()
+        print("2. Top 5 most tweeted words")
         print("=====")
         print("Most Tweeted Words")
         for x in range(5):
@@ -87,6 +91,7 @@ while status != 99:
     elif status == 3:
         l = db.getTweetRank()
         print()
+        print("3. Top 5 most tweeted users")
         print("=====")
         print("Most Tweeted Users")
         for x in range(5):
@@ -96,6 +101,7 @@ while status != 99:
         status = -1
     elif status == 4:
         print()
+        print("4. Find users who tweeted a word")
         print("Input one word: ", end="")
         w = input()
         l = db.searchUserByWord(w)
@@ -115,6 +121,7 @@ while status != 99:
         status = -1
     elif status == 5:
         print()
+        print("5. Find all people who are friends of the above users")
         print("Input one word: ", end="")
         w = input()
         l = db.searchUserByWord(w)
@@ -135,6 +142,7 @@ while status != 99:
         status = -1
     elif status == 6:
         print()
+        print("6. Delete all mentions of a word")
         print("Input one word: ", end="")
         w = input()
         result = db.deleteTweet(w)
@@ -150,6 +158,7 @@ while status != 99:
     elif status == 7:
         l = [0,0]
         print()
+        print("7. Delete all users who mentioned a word")
         print("Input one word: ", end="")
         w = input()
         user = db.searchUserByWord(w)[0]
@@ -169,5 +178,9 @@ while status != 99:
         print()
         status = -1
     else:
+        print()
+        print("=====")
         print("Invalid input.")
+        print("=====")
+        print()
         status = -1

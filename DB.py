@@ -4,8 +4,8 @@ from Nodes import User
 from Nodes import Tweet
 from Nodes import Edge
 
-USER_HASH_SIZE = 10
-TWEET_HASH_SIZE = 10
+USER_HASH_SIZE = 100
+TWEET_HASH_SIZE = 100
 
 class MasterDB:
     def __init__(self):

@@ -120,3 +120,7 @@ Hash로 이루어진 TweetDB에서 원하는 Tweet를 찾아 TweetDB.list(Hash)�
 가장 많이 사용된 Tweet등을 쉽게 구하고자하는 의도로 다른 User라도 같은 단어를 사용하면 동일한 Tweet 간주하도록 처리했다. 하지만 이는 User를 지울때 해당 User가 작성한 Tweet를 추적하는 과정에 많은 어려움을 줬다. 왜냐하면 해당 Tweet의 userList를 읽어 중복된 개수까지 고려하여 처리를 해야하기 때문이다. 차라리 같은 User의 같은 Tweet라도 따로 관리를 한다면, 비록 추가 sort에 따른 2번과 4번의 Time Complexity O(n log n)로 증가하더라도 7번 처리를 더 빠르게 할 수 있을 것이다.
 ###EdgeDB의 list를 Hash로 사용
 EdgeDB의 list를 LinkedList로 한 이유는 어차피 모든 Edge노드의 A와 B를 확인해야 해서 마땅한 key값을 설정하기 어렵기 때문이었다. 하지만 하나는 A를 key로 하고 나머지는 B를 key로 하는 Hash를 만들면 비록 메모리 공간을 조금 더 차지하더라도 검색 TimeComplexity를 현저히 줄일 수 있을 것이다.
+###Update 추적
+User, Tweet나 Edge 값의 변동이 있지 않은한 Statistics 또는 Top5 등의 값은 바뀔 일이 없다. 그러므로 이미 한번 값을 도출한 이후 그 다음 변동사항이 있기 전까지 불필요한 반복 활동을 방지할 수 있는 bool 값이 있으면 좋다. 특정 값(예를 들어 Statistics)를 구한 이후 해당 up-to-date 변수(bool)를 true로 바꾸어 false가 되기 전까지 추가 계산 없이 저장된 값을 반환하는 형식을 사용할 수 있다.
+###Strongly Connected Components와 Shortest Path 구현
+시간이 부족한 관계로 위 두 기능을 구현하지 못했다. **Strongly Connected Component**(SCC) 같은 경우, SCC기능을 **DFS**를 사용하여 구현한 클래스를 우선 작성하고, User.id를 SCC.addNode에 Edge.A&B를 SCC.addEdge에 넣어 DB의 데이터를 SCC로 넘겨서 도출한 결과를 다시 DB로 반환하는 구조를 생각했다. **Shortest Path**(SP)도 마찬가지로 SP기능을 **Dijkstra Algorithm**을 사용하여 구현한 클래스를 우선 작성하고, DB데이터를 옮기되 User.followCount를 SP.addEdge의 weigth로 넘겨줘 도출한 결과를 다시 DB로 반환하는 구조를 생각했다.
