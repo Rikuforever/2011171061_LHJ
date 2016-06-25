@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6247f2e8-b889-4183-91e7-bf2447109f79" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DB.py" afterPath="$PROJECT_DIR$/DB.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
     </list>
@@ -23,17 +24,17 @@
       <content type="file-editors">
         <state>
           <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-            <file leaf-file-name="Nodes.py" pinned="false" current-in-tab="true">
+            <file leaf-file-name="Nodes.py" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/Nodes.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="361">
-                    <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+                  <state relative-caret-position="152">
+                    <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
                     <folding />
                   </state>
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="LinkedList.py" pinned="false" current-in-tab="false">
+            <file leaf-file-name="LinkedList.py" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/LinkedList.py">
                 <provider selected="true" editor-type-id="text-editor">
                   <state relative-caret-position="218">
@@ -67,20 +68,19 @@
       <file leaf-file-name="DB.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DB.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="273" column="45" selection-start-line="273" selection-start-column="45" selection-end-line="273" selection-end-column="45" />
+            <state relative-caret-position="333">
+              <caret line="342" column="56" selection-start-line="342" selection-start-column="56" selection-end-line="342" selection-end-column="56" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
                 <element signature="e#350#517#0" expanded="false" />
-                <element signature="e#561#1349#0" expanded="false" />
-                <element signature="e#1392#1774#0" expanded="false" />
-                <element signature="e#2340#4083#0" expanded="false" />
-                <element signature="e#4703#6681#0" expanded="false" />
-                <element signature="e#6858#6992#0" expanded="false" />
-                <marker date="1466826403743" expanded="false" signature="4111:4156" ph="..." />
-                <marker date="1466826403743" expanded="false" signature="4186:4232" ph="..." />
-                <marker date="1466826403743" expanded="false" signature="4261:4306" ph="..." />
-                <marker date="1466826403743" expanded="false" signature="4345:4475" ph="..." />
+                <element signature="e#561#1394#0" expanded="false" />
+                <element signature="e#1437#1819#0" expanded="false" />
+                <element signature="e#3199#4942#0" expanded="false" />
+                <element signature="e#5213#5334#0" expanded="false" />
+                <element signature="e#7717#7851#0" expanded="false" />
+                <marker date="1466833768199" expanded="false" signature="4970:5015" ph="..." />
+                <marker date="1466833768199" expanded="false" signature="5045:5091" ph="..." />
+                <marker date="1466833768199" expanded="false" signature="5120:5165" ph="..." />
               </folding>
             </state>
           </provider>
@@ -89,8 +89,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="130" column="0" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
+            <state relative-caret-position="114">
+              <caret line="39" column="38" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -128,8 +128,8 @@
         <option value="$PROJECT_DIR$/Hash.py" />
         <option value="$PROJECT_DIR$/Nodes.py" />
         <option value="$PROJECT_DIR$/debug.py" />
-        <option value="$PROJECT_DIR$/DB.py" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/DB.py" />
       </list>
     </option>
   </component>
@@ -473,7 +473,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="7" />
+      <option name="time" value="8" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -485,15 +485,14 @@
           <folding>
             <element signature="e#0#21#0" expanded="true" />
             <element signature="e#350#517#0" expanded="false" />
-            <element signature="e#561#1349#0" expanded="false" />
-            <element signature="e#1392#1774#0" expanded="false" />
-            <element signature="e#2340#4083#0" expanded="false" />
-            <element signature="e#4703#6681#0" expanded="false" />
-            <element signature="e#6858#6992#0" expanded="false" />
-            <marker date="1466826403743" expanded="false" signature="4111:4156" ph="..." />
-            <marker date="1466826403743" expanded="false" signature="4186:4232" ph="..." />
-            <marker date="1466826403743" expanded="false" signature="4261:4306" ph="..." />
-            <marker date="1466826403743" expanded="false" signature="4345:4475" ph="..." />
+            <element signature="e#561#1394#0" expanded="false" />
+            <element signature="e#1437#1819#0" expanded="false" />
+            <element signature="e#3199#4942#0" expanded="false" />
+            <element signature="e#5213#5334#0" expanded="false" />
+            <element signature="e#7717#7851#0" expanded="false" />
+            <marker date="1466833768199" expanded="false" signature="4970:5015" ph="..." />
+            <marker date="1466833768199" expanded="false" signature="5045:5091" ph="..." />
+            <marker date="1466833768199" expanded="false" signature="5120:5165" ph="..." />
           </folding>
         </state>
       </provider>
@@ -553,15 +552,14 @@
           <folding>
             <element signature="e#0#21#0" expanded="true" />
             <element signature="e#350#517#0" expanded="false" />
-            <element signature="e#561#1349#0" expanded="false" />
-            <element signature="e#1392#1774#0" expanded="false" />
-            <element signature="e#2340#4083#0" expanded="false" />
-            <element signature="e#4703#6681#0" expanded="false" />
-            <element signature="e#6858#6992#0" expanded="false" />
-            <marker date="1466826403743" expanded="false" signature="4111:4156" ph="..." />
-            <marker date="1466826403743" expanded="false" signature="4186:4232" ph="..." />
-            <marker date="1466826403743" expanded="false" signature="4261:4306" ph="..." />
-            <marker date="1466826403743" expanded="false" signature="4345:4475" ph="..." />
+            <element signature="e#561#1394#0" expanded="false" />
+            <element signature="e#1437#1819#0" expanded="false" />
+            <element signature="e#3199#4942#0" expanded="false" />
+            <element signature="e#5213#5334#0" expanded="false" />
+            <element signature="e#7717#7851#0" expanded="false" />
+            <marker date="1466833768199" expanded="false" signature="4970:5015" ph="..." />
+            <marker date="1466833768199" expanded="false" signature="5045:5091" ph="..." />
+            <marker date="1466833768199" expanded="false" signature="5120:5165" ph="..." />
           </folding>
         </state>
       </provider>
@@ -626,18 +624,26 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MasterDB.py" />
-    <entry file="file://$PROJECT_DIR$/LinkedList.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Hash.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nodes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LinkedList.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
           <folding />
         </state>
       </provider>
@@ -652,37 +658,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="130" column="0" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
+        <state relative-caret-position="114">
+          <caret line="39" column="38" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DB.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="273" column="45" selection-start-line="273" selection-start-column="45" selection-end-line="273" selection-end-column="45" />
+        <state relative-caret-position="333">
+          <caret line="342" column="56" selection-start-line="342" selection-start-column="56" selection-end-line="342" selection-end-column="56" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
             <element signature="e#350#517#0" expanded="false" />
-            <element signature="e#561#1349#0" expanded="false" />
-            <element signature="e#1392#1774#0" expanded="false" />
-            <element signature="e#2340#4083#0" expanded="false" />
-            <element signature="e#4703#6681#0" expanded="false" />
-            <element signature="e#6858#6992#0" expanded="false" />
-            <marker date="1466826403743" expanded="false" signature="4111:4156" ph="..." />
-            <marker date="1466826403743" expanded="false" signature="4186:4232" ph="..." />
-            <marker date="1466826403743" expanded="false" signature="4261:4306" ph="..." />
-            <marker date="1466826403743" expanded="false" signature="4345:4475" ph="..." />
+            <element signature="e#561#1394#0" expanded="false" />
+            <element signature="e#1437#1819#0" expanded="false" />
+            <element signature="e#3199#4942#0" expanded="false" />
+            <element signature="e#5213#5334#0" expanded="false" />
+            <element signature="e#7717#7851#0" expanded="false" />
+            <marker date="1466833768199" expanded="false" signature="4970:5015" ph="..." />
+            <marker date="1466833768199" expanded="false" signature="5045:5091" ph="..." />
+            <marker date="1466833768199" expanded="false" signature="5120:5165" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Nodes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>

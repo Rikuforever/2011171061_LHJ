@@ -35,6 +35,9 @@ while status != 99:
         print()
         status = -1
     elif status == 1:
+        cUser = db.UserDB.totalUser
+        cEdge = db.EdgeDB.totalEdge
+        cTweet = db.TweetDB.totalTweet
         f = db.getFollowRank()
         t = db.getTweetRank()
         lenFollow = len(f)
@@ -46,6 +49,10 @@ while status != 99:
 
         print()
         print("=====")
+        print("Total users: " + str(cUser))
+        print("Total friendship records: " + str(cEdge))
+        print("Total tweets: " + str(cTweet))
+        print()
         print("Average number of friends: "+str(db.EdgeDB.totalEdge%lenFollow))
         print("Minimum friends: "+str(minFollow.followCount))
         print("Maximum number of friends: "+str(maxFollow.followCount))
@@ -80,7 +87,7 @@ while status != 99:
         print()
         print("Input one word: ", end="")
         w = input()
-        l = db.searchUserByWord()
+        l = db.searchUserByWord(w)
         print()
         print("=====")
         if l:   # Valid word
@@ -88,6 +95,8 @@ while status != 99:
             count = l[1]
             for x in range(len(user)):
                 print(user[x].userName+" ( "+str(count[x])+" times )")
+            print()
+            print("Total User(s): "+str(len(user)))
         else:   # Valid word
             print("Invalid word, please try again")
         print("=====")
@@ -128,7 +137,26 @@ while status != 99:
         print()
         status = -1
     elif status == 7:
-
+        l = [0,0]
+        print()
+        print("Input one word: ", end="")
+        w = input()
+        user = db.searchUserByWord(w)[0]
+        print()
+        print("=====")
+        if l:
+            for x in range(len(user)):    # For each user
+                r = db.deleteUser(user[x].id)
+                l[0] += r[0]
+                l[1] += r[1]
+            print("Deleted user(s): "+str(len(user)))
+            print("Deleted friendship record(s):" + str(l[1]))
+            print("Deleted tweet(s): "+str(l[0]))
+        else:
+            print("Invalid word, please try again")
+        print("=====")
+        print()
+        status = -1
     else:
         print("Invalid input.")
         status = -1

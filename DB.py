@@ -29,6 +29,7 @@ class MasterDB:
             if t:                           # If already existing Tweet, add User
                 t.userList.add(id, u)
                 t.tweetCount += 1
+                self.TweetDB.totalTweet += 1
             else:                           # If no matching Tweet, make new Tweet
                 new = Tweet()
                 new.word = word
@@ -52,6 +53,24 @@ class MasterDB:
             self.UserDB.plusFollow(Aid)          # Update Statistics
         else:
             print("Error : Invalid UserID")
+
+    def deleteUser(self, id):
+        l = []
+        delE = 0
+        u = self.UserDB.getUser(id)
+        if u:
+            self.UserDB.deleteUser(id)  # Delete User
+            delT = self.TweetDB.deleteUser(id)  # Delete Tweet that User wrote / return = number of deleted tweets
+            user = self.EdgeDB.deleteUser(id)   # Delete Edges that User is envolved / return = The friends who are following the user
+            delE += user[1] + len(user[0]) # The number of edges when the user is A + B
+            for x in range(len(user[0])):
+                self.UserDB.getUser(user[0][x]).followCount -= 1
+            l.append(delT)
+            l.append(delE)
+            return l    # [# of deleted tweets, # of deleted edges]
+        else:
+            print("Error : Invalid User")
+            return None
 
     def deleteTweet(self, word):
         t = self.TweetDB.searchTweet(word)
@@ -251,6 +270,7 @@ class TweetDB:
         n = h % self.list.size
         t = self.list.hTable[n].search(word)
         if t:
+            self.totalTweet -= t.tweetCount
             self.list.hTable[n].delete(word)
             return t
         else:
@@ -264,6 +284,19 @@ class TweetDB:
             return t
         else:
             return None
+
+    def deleteUser(self, id):   # Bad Process
+        c = 0
+        for x in range(len(self.list.hTable)):  # Through Hash List
+            n = self.list.hTable[x].start
+            while n:  # Through Linked List
+                if n.v: # If TweetNode exists
+                    while n.v.userList.delete(id): # If found same id
+                        n.v.tweetCount -= 1
+                        self.totalTweet -= 1
+                        c += 1
+                n = n.next
+        return c
 
     def updateWordRank(self):
         self.wordRank.clear()
@@ -290,19 +323,30 @@ class EdgeDB:
         self.totalEdge += 1
 
     def deleteUser(self, id):
+        l = []
+        user = []
+        count = 0
         pre = None
         n = self.list.start
         while n:
             if (n.v.A == id) or (n.v.B == id):  # If either A or B is the UserID
-                if pre:                         # Delete it
+                if n.v.B == id:                 # If Followed user(B) matches, stash the follower
+                    user.append(n.v.A)
+                else:                           # If Following user(A) matches, count
+                    count += 1
+                if pre:                         # Actual delete process
                     pre.next = n.next
                     n = n.next
                 else:
                     self.list.start = n.next
                     n = self.list.start
+                self.totalEdge -= 1             # Update
             else:
                 pre = n
                 n = n.next
+        l.append(user)
+        l.append(count)
+        return l    # [List of UserID following the input, # of Users which the input follows]
 
     def getFollowID(self, id):
         l = []
