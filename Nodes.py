@@ -37,7 +37,6 @@ class Tweet:
         return out
 
 
-
 class Edge:                     # From A to B
     def __init__(self):
         self.A = None
