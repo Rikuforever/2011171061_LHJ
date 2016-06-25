@@ -26,7 +26,7 @@ class Tweet:
                 x = user.index(n.v)
             except ValueError:
                 x = None
-            if not x:
+            if x is None:
                 user.append(n.v)
                 count.append(1)
             else:

@@ -157,9 +157,7 @@ while status != 99:
         print("=====")
         if user:
             for x in range(len(user)):    # For each user
-                #print(user[x].userName)
                 r = db.deleteUser(user[x].id)
-                #print(r)
                 l[0] += r[0]
                 l[1] += r[1]
             print("Deleted user(s): "+str(len(user)))
