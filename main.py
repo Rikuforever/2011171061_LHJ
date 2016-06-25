@@ -1,11 +1,11 @@
 from DB import MasterDB
 
 db = MasterDB()
-status = -1
+status = 0
 
 while status != 99:
     if status == -1:
-        print("0. Read data files")
+        print("0. Read data files (Reset DB)")
         print("1. Display statistics")
         print("2. Top 5 most tweeted words")
         print("3. Top 5 most tweeted users")
@@ -113,6 +113,22 @@ while status != 99:
         print("=====")
         print()
         status = -1
+    elif status == 6:
+        print()
+        print("Input one word: ", end="")
+        w = input()
+        result = db.deleteTweet(w)
+        print()
+        print("=====")
+        if result:
+            print("Successfully ereased "+str(result)+" tweet(s)")
+        else:
+            print("Invalid word, please try again")
+        print("=====")
+        print()
+        status = -1
+    elif status == 7:
+
     else:
         print("Invalid input.")
         status = -1

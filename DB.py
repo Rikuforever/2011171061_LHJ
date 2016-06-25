@@ -53,6 +53,20 @@ class MasterDB:
         else:
             print("Error : Invalid UserID")
 
+    def deleteTweet(self, word):
+        t = self.TweetDB.searchTweet(word)
+        if t:                   # If valid tweet
+            l = t.getUserList() # Get users who tweeted the word
+            total = t.tweetCount
+            user = l[0]
+            count = l[1]
+            self.TweetDB.deleteTweet(word)  # Delete tweet from DB
+            for x in range(len(user)):      # For each user, decrease tweet count
+                user[x].tweetCount -= count[x]
+            return total
+        else:
+            return None
+
     def readFile(self):
         data = []
         counter = 0
@@ -232,9 +246,13 @@ class TweetDB:
             self.totalTweet += 1
             return 1
 
-    def deleteTweet(self, key):
-        if self.list.delete(key):
-            self.totalTweet -= 1
+    def deleteTweet(self, word):
+        h = self.getHash(word)
+        n = h % self.list.size
+        t = self.list.hTable[n].search(word)
+        if t:
+            self.list.hTable[n].delete(word)
+            return t
         else:
             return None
 
