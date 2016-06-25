@@ -1,5 +1,16 @@
 from DB import MasterDB
 
+def getInputInt():
+    n = None
+    while not n:
+        try:
+            n = int(input())
+        except ValueError:
+            print("Wrong input. Only requires number.")
+            print("Please input number: ", end="")
+            n = None
+    return n
+
 db = MasterDB()
 status = 0
 
@@ -17,7 +28,7 @@ while status != 99:
         print("9. Find shortest path from a given user")
         print("99. Quit")
         print("Select Menu:  ", end="")
-        status = int(input())
+        status = getInputInt()
     elif status == 0:
         print()
         print("Loading")
